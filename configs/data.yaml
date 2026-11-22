@@ -1,0 +1,60 @@
+# Data pipeline configuration
+
+# Source datasets
+bodmas:
+  name: "BODMAS (Blue Hexagon Open Dataset for Malware Analysis)"
+  url: "https://whyisyoung.github.io/BODMAS/"
+  access: "university_email_required"
+  description: "57,293 malware samples, 581 curated families, timestamped"
+  license: "academic_research_only"
+
+assemblage:
+  name: "Assemblage Windows PE corpus"
+  url: "https://assemblage-dataset.net/"
+  access: "public_preview"
+  description: "~91,000 PE binaries from open-source projects"
+  license: "per_binary_license"
+
+# Data splits
+random_split:
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15
+  description: "Reference split for baseline comparison"
+
+temporal_split:
+  malware_split: "time_based"
+  goodware_split: "repository_based"
+  description: "Chronological split to test concept drift"
+
+unseen_family_split:
+  holdout_families: "selected_pre_training"
+  description: "Family-held-out for generalization testing"
+
+# Manifest fields
+manifest_fields:
+  - sample_id
+  - sha256
+  - label (benign/malicious)
+  - family (if available)
+  - first_seen (if available)
+  - source_dataset
+  - source_project (for goodware)
+  - file_size
+  - pe_valid (bool)
+  - representation_config_id
+  - image_hash (rendered tensor hash)
+  - similarity_group (for duplicate control)
+  - split
+  - license_or_terms
+
+# Storage
+raw_dir: "data/raw"
+manifest_dir: "data/manifests"
+processed_dir: "data/processed"
+interim_dir: "data/interim"
+
+# Validation
+max_file_size_mb: 50
+reject_malformed: true
+log_rejections: "data/interim/rejected_files.csv"

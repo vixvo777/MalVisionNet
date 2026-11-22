@@ -1,0 +1,16 @@
+# Config for representation pipeline
+
+grayscale:
+  width_pixels: 256
+  padding_value: 0
+  resize_target: [224, 224]
+  resize_method: "area" # "area" (INTER_AREA) or "bilinear"
+
+rgb_trigram:
+  width_pixels: 256 # 256 pixels = 768 bytes per row
+  padding_value: 0
+  resize_target: [224, 224]
+  resize_method: "area" # "area" (INTER_AREA) or "bilinear"
+  channel_order: "RGB" # "RGB" or "BGR"
+
+canonical_config_id: "rep_v1_rgb256_224area"
