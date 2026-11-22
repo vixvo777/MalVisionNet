@@ -1,13 +1,11 @@
-# MalVisionNet Package
-# Core modules:
-# - data: dataset loading, manifests, PE validation, splitting
-# - representations: grayscale and RGB-trigram converters
-# - features: LightGBM baseline PE feature extraction
-# - models: ResNet18, MobileViT, LeViT implementations
-# - training: training loops, losses, metrics
-# - evaluation: metrics, robustness, error analysis
-# - explainability: saliency/attention visualizations
-# - export: ONNX export, quantization, benchmarking
-# - api: FastAPI service
+from .data import PEValidator, ManifestBuilder
+from .representations import GrayscaleConverter, RGBTrigramConverter, resize_byteplot
+from .features import extract_features, build_feature_table
+from .logger import logger
 
-__version__ = "0.1.0"
+__all__ = [
+    "PEValidator", "ManifestBuilder",
+    "GrayscaleConverter", "RGBTrigramConverter", "resize_byteplot",
+    "extract_features", "build_feature_table",
+    "logger"
+]
