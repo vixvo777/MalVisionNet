@@ -1,0 +1,14 @@
+# Training Configuration for MalVisionNet
+
+train:
+  representation: "grayscale"  # Options: grayscale, rgb
+  backbone: "resnet18"         # Options: resnet18, mobilevit_xxs, levit_128s
+  pretrained: false
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  epochs: 30
+  pos_weight: 1.0              # For class imbalance (malware positive)
+  train_manifest_path: "data/manifests/malvision_manifest_split.csv"
+  checkpoint_dir: "artifacts/checkpoints/grayscale_resnet18"
+  final_model_path: "artifacts/models/grayscale_resnet18_final.pth"
