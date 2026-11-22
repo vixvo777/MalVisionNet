@@ -1,0 +1,13 @@
+[project]
+name = "malvisionnet"
+version = "0.1.0"
+description = "Leakage-aware Windows PE malware detection using binary‑to‑image learning"
+authors = [{name = "Hemant Malviya", email = "editmyphoto59@gmail.com"}]
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["malvision"]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
